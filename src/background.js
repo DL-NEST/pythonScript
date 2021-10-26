@@ -1,33 +1,48 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, globalShortcut } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
+import { join } from 'path'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
-
+let win
 async function createWindow () {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
+    // 关闭工具栏
+    autoHideMenuBar: true,
+    frame: false,
+    transparent: true,
     webPreferences: {
-
-      // Use pluginOptions.nodeIntegration, leave this alone
+      // Use pluginOptions.nodeIntegration, lea ve this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
-      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
+      nodeIntegration: true,
+      // nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      contextIsolation: false,
+      enableRemoteModule: true, // 使用remote模块
+      preload: join(__dirname, 'preload.js')
     }
   })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
-    if (!process.env.IS_TEST) win.webContents.openDevTools()
+    // 检测模式
+    if (!process.env.IS_TEST) {
+      console.log('  _____ _____ ____ _____ \n' +
+        ' |_   _| ____/ ___|_   _|\n' +
+        '   | | |  _| \\___ \\ | |  \n' +
+        '   | | | |___ ___) || |  \n' +
+        '   |_| |_____|____/ |_|  \n' +
+        '                         ')
+    }
   } else {
     createProtocol('app')
     // Load the index.html when not in development
@@ -79,3 +94,14 @@ if (isDevelopment) {
     })
   }
 }
+// 全局快捷键
+app.whenReady().then(() => {
+  // 重新加载浏览器资源
+  globalShortcut.register('Alt+q', () => {
+    win.reload()
+  })
+  // 打开开发者调试工具
+  globalShortcut.register('Alt+w', () => {
+    win.webContents.openDevTools({ mode: 'undocked' })
+  })
+})

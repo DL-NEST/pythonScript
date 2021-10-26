@@ -1,0 +1,12 @@
+//div{
+//  -webkit-user-select: none;
+//}
+body,html{
+  margin: 0;
+  padding: 0;
+}
+.page{
+  border-radius: 4px;
+  box-shadow:0 0 5px 2px rgba(0,0,0,0.2);
+  -webkit-app-region: drag;
+}
