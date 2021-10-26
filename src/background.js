@@ -14,8 +14,8 @@ let win
 async function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 340,
+    height: 580,
     // 关闭工具栏
     autoHideMenuBar: true,
     frame: false,

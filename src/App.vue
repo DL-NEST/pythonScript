@@ -1,11 +1,18 @@
 <template>
-  <router-view/>
+  <n-config-provider>
+    <AppProvider>
+      <router-view></router-view>
+    </AppProvider>
+  </n-config-provider>
 </template>
 
 <script>
+import AppProvider from './components/Application/Application'
+import { NConfigProvider } from 'naive-ui'
 export default {
-  name: 'Home',
   components: {
+    AppProvider,
+    NConfigProvider
   },
   mounted () {
     console.info('%c  _____ _____ ____ _____ \n' +
@@ -14,6 +21,15 @@ export default {
       '   | | | |___ ___) || |  \n' +
       '   |_| |_____|____/ |_|  \n' +
       '                         ', 'color:#ffeb2b')
+  },
+  created () {
+    let key1 = null
+    document.onkeydown = (e) => {
+      if (key1 === 'Alt' && e.key === 'a') {
+        this.$router.push('nav')
+      }
+      key1 = e.key
+    }
   }
 }
 </script>
@@ -29,7 +45,7 @@ export default {
   width: 100%;
   height: 100%;
   box-sizing:border-box;
-  padding: 4px;
+  padding: 2px;
   background-color: rgba(0,0,0,0);
   overflow: hidden;
 }

@@ -1,5 +1,7 @@
 <template>
-
+  <div class="test page">
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -8,6 +10,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+.test{
+  background-color: #ffffff;
+}
 </style>
