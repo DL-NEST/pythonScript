@@ -1,8 +1,10 @@
 <template>
   <div class="main page">
-    <div class="kz-top"></div>
+    <div class="kz-top">
+      <svg t="1636810001429" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="996" width="200" height="200"><path d="M128.5 258.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5zM128.5 826.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5zM128.5 542.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5z" p-id="997" fill="#1afa29"></path></svg>
+    </div>
     <div class="top-tool">
-      <div class="tool" @click="clickItem($event,'script')" style="border-radius: 4px 0 0 0;margin-left: 0;">
+      <div class="tool opt" @click="clickItem($event,'script')" style="border-radius: 4px 0 0 0;margin-left: 0;">
         <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M967.111 711.111H739.556c-56.89 0-85.334 28.445-85.334 85.333V1024H113.778a56.889 56.889 0 0 1-56.89-56.889V56.89A56.889 56.889 0 0 1 113.779 0h796.444a56.889 56.889 0 0 1 56.89 56.889V711.11z m0 85.333L739.556 1024V796.444H967.11zM155.193 682.667h82.204v-153.6h53.59c37.262 0 65.65-1.935 85.333-5.86 14.393-3.129 28.615-9.557 42.61-19.342 13.994-9.671 25.486-23.04 34.588-40.107 9.102-17.066 13.597-38.058 13.597-63.033 0-32.426-7.851-58.823-23.61-79.303A106.78 106.78 0 0 0 384.91 281.6c-15.19-4.096-47.786-6.144-97.849-6.144H155.25v407.21z m82.204-338.319h39.709c29.582 0 49.38 0.91 59.164 2.788a56.889 56.889 0 0 1 33.053 18.034c8.704 9.67 13.084 21.845 13.084 36.636a54.727 54.727 0 0 1-9.33 31.687 53.988 53.988 0 0 1-25.713 20.025c-10.923 4.267-32.54 6.372-64.968 6.372h-44.999V344.348z m404.139 338.319h81.92V511.829l149.788-236.373h-94.72l-93.866 161.11-95.858-161.11h-96.427L641.536 511.26v171.407z" ></path></svg>
         <p>脚本</p>
       </div>
@@ -59,9 +61,13 @@ export default {
     min-height: 20px;
     max-height: 20px;
     flex-grow: 1;
-    background-color: white;
+    background-color: #fc8787;
     margin-bottom: 2px;
     border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
   .top-tool{
     min-height: 60px;
@@ -91,6 +97,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
       .icon{
         pointer-events: none;
         width: 26px;
