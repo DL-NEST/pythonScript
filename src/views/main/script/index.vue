@@ -1,11 +1,15 @@
 <template>
   <div class="script">
-    <div class="script-item" v-for="item in 20" :key="item"></div>
+<!--    <div class="script-item" v-for="item in 10" :key="item"></div>-->
+    <script-item class="script-item" v-for="item in 10" :key="item"></script-item>
   </div>
 </template>
 
 <script>
+import ScriptItem from './script-item'
+
 export default {
+  components: { ScriptItem },
   data () {
     return {}
   },
@@ -34,6 +38,10 @@ export default {
     height: 60px;
     margin-bottom: 5px;
     background-color: #2c3e50;
+    border-radius: 4px;
+    //布局
+    display: flex;
+    flex-direction: row;
   }
 }
 .script::-webkit-scrollbar {

@@ -1,7 +1,7 @@
 <template>
   <div class="main page">
-    <div class="kz-top">
-      <svg t="1636810001429" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="996" width="200" height="200"><path d="M128.5 258.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5zM128.5 826.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5zM128.5 542.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5z" p-id="997" fill="#1afa29"></path></svg>
+    <div class="kz-top" @click.shift="dragThe($event)">
+      <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M128.5 258.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5zM128.5 826.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5zM128.5 542.5c-16.569 0-30-13.431-30-30 0-16.569 13.431-30 30-30H896c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H128.5z"></path></svg>
     </div>
     <div class="top-tool">
       <div class="tool opt" @click="clickItem($event,'script')" style="border-radius: 4px 0 0 0;margin-left: 0;">
@@ -46,6 +46,10 @@ export default {
       this.$router.push(router)
       item.target.classList.add('opt')
       activeItem.className = 'tool'
+    },
+    dragThe (even) {
+      console.log('ewf')
+      // even.target.classList.add('ass')
     }
   }
 }
@@ -58,21 +62,29 @@ export default {
   display: flex;
   flex-direction: column;
   .kz-top {
-    min-height: 20px;
-    max-height: 20px;
+    -webkit-app-region: drag;
+    min-height: 18px;
+    max-height: 18px;
     flex-grow: 1;
-    background-color: #fc8787;
     margin-bottom: 2px;
     border-radius: 4px 4px 0 0;
     cursor: pointer;
     display: flex;
-    flex-direction: row;
+    flex-direction:column;
     justify-content: center;
+    align-items: center;
+    svg{
+      height: 15px;
+      fill: #010203;
+    }
+  }
+  .ass{
+    -webkit-app-region: drag;
   }
   .top-tool{
     min-height: 60px;
     max-height: 60px;
-    flex-grow: 1;
+    flex-grow: 25;
     background-color: #2c3e50;
     margin-bottom: 2px;
     border-radius: 4px 4px 0 0;

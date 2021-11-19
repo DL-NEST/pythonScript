@@ -21,7 +21,7 @@ function insertLoading () {
 
   loadingStyle.textContent += `
   /* https://projects.lukehaas.me/css-loaders/ */
-  .loading-box { height: 100vh; border-radius: 6px; width: 100vw; position: fixed; left: 0; top: 0; display: flex; align-items: center; background-color: #ffffff; z-index: 9; }
+  .loading-box { height: 100vh; border-radius: 6px; width: 100vw; position: fixed; left: 0; top: 0; display: flex; -webkit-app-region: drag; align-items: center; background-color: #ffffff; z-index: 9; }
 
   .load1 .loader,
   .load1 .loader:before,
